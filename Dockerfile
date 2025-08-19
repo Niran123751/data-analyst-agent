@@ -1,10 +1,18 @@
 FROM python:3.11-slim
 
+# Set working directory
 WORKDIR /app
+
+# Install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app ./app
+# Copy code
+COPY ./app /app
+COPY ./tests /tests
 
-ENV PORT=8080
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080", "--workers", "2"]
+# Expose Render port (Render expects $PORT)
+EXPOSE 10000
+
+# Run FastAPI
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10000"]
