@@ -1,8 +1,9 @@
 fastapi
 uvicorn
-httpx
 pandas
-duckdb
 matplotlib
-pdfplumber
-pillow
+beautifulsoup4
+requests
+duckdb
+pytest
+
